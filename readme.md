@@ -11,4 +11,4 @@
 
 ## Week 3
 - Javascript fundamental from here i will going to cover almost everything.
-- Creating Pollyfill functions
+- Creating Polyfill functions
