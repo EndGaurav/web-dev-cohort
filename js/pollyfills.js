@@ -59,15 +59,43 @@ if (!Array.prototype.myFilter) {
     Array.prototype.myFilter = function (callback) {
         const newArray = [];
         for (let i = 0; i < this.length; i++) {
-           if(callback(this[i])) {
+            if(callback(this[i])) {
                 newArray.push(this[i])
-           }
+            }
         }
         return newArray;
     }
 }
 
 console.log(arr.myFilter((item) => item % 2 == 0));
+
+// let's write reduce method polyfill function 
+// means: what sorts of paramater that function takes
+// what that function do 
+// what that function return
+
+const sum = arr.reduce((acu, i) => {
+    return acu + i
+}, 2)
+
+console.log(sum);
+
+//  [1,2,3,4,5,6]; 
+if (!Array.prototype.myReduce) {
+    Array.prototype.myReduce = function (callback, initialValue) {
+       let accumulator = 0;
+        for (let i = 0; i < this.length; i++) {
+           accumulator = callback(accumulator, this[i], initialValue);
+        }
+
+        return accumulator + initialValue;
+    }
+}
+
+const mySum = arr.myReduce((acc, i) => {
+    return acc + i;
+}, 2)
+console.log(mySum);
 
 
 
